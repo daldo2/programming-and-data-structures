@@ -34,18 +34,36 @@ Interactive projects developed using the `primlib` library:
 
 ### Compiling Banking System
 
-Navigate to `/banking-system` and execute:
+Navigate to `banking-system/` and execute:
 
+```bash
 gcc banking_system.c -o banking_system
-
+```
 
 ### Compiling Octal Text Processor
-Navigate to `/octal-processor` and execute:
-gcc main.c rand_malloc.c -o octal_processor
+
+Navigate to `octal-processor/` and execute:
+
+```bash
+make          # builds ./test
+make check    # runs it under Valgrind
+```
 
 ### Compiling Graphics Projects
-Navigate to the specific project directory and execute:
-gcc main.c ../primlib/primlib.c -o program_name -lSDL2 -lSDL2_gfx -lm
+
+Each game is in `testlib.c`; the shared library is in `primlib/`.
+Navigate to the project directory (`tetris/`, `tower-of-hanoi/` or `rotating-polygon/`) and execute:
+
+```bash
+gcc testlib.c ../primlib/primlib.c -I../primlib -o program_name -lSDL2 -lSDL2_gfx -lm
+```
+
+`rotating-polygon` uses `true` without `<stdbool.h>`, so with GCC older than 15 add `-std=gnu2x`.
+
+### strtol
+
+`strtol/strtol.c` is my own implementation of the standard `strtol` function
+(no `main`, so it is compiled together with a test program, not run on its own).
 
 <img width="1401" height="818" alt="image" src="https://github.com/user-attachments/assets/4594463f-4d62-471a-bd27-103554e26030" />
 
